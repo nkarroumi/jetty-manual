@@ -2,10 +2,8 @@
 package com.example;
 
 import jakarta.servlet.http.*;
-import jakarta.servlet.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.ee10.servlet.*;
-
 import java.io.*;
 import java.util.stream.IntStream;
 
