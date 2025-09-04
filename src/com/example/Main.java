@@ -11,11 +11,54 @@ public class Main {
     static final FakeDB db = new FakeDB();
 
     public static void main(String[] args) throws Exception {
+        //Convenience constructor Creates server and a ServerConnector at the passed port.
         Server server = new Server(8081);
+        
+        
+        /*ServletContextHandler vs ServletHandler in Jetty
+            Jetty provides two key classes for handling servlets: ServletContextHandler and ServletHandler. 
+            While they may seem similar, they serve different purposes and are used in distinct scenarios. Here's a breakdown:
+            1. ServletContextHandler
+            Purpose: Manages a complete ServletContext for your application.
+            Features:
+            Creates and manages a shared ServletContext for all servlets, filters, sessions, and security configurations.
+            Supports advanced features like session management, context attributes, and lifecycle listeners.
+            Ideal for applications requiring a fully functional servlet environment.
+            Use Case: When you need a complete web application setup with multiple servlets, filters, and session handling.
+           
+            Example:
+            ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+            context.setContextPath("/");
+            context.addServlet(MyServlet.class, "/example");
+            server.setHandler(context);
+            
+            2. ServletHandler
+            Purpose: A lightweight handler for managing servlets without a full ServletContext.
+            Features:
+            Does not create or manage a ServletContext.
+            Lacks support for filters, sessions, and other advanced features.
+            Suitable for simple setups where you only need to serve basic servlets.
+            Use Case: When you need a minimal setup for serving servlets without the overhead of a full servlet environment.
+            
+            Example:
+            ServletHandler handler = new ServletHandler();
+            handler.addServletWithMapping(MyServlet.class, "/example");
+            server.setHandler(handler);
+         */
         ServletContextHandler context = new ServletContextHandler();
+        
+        /*
+         * In simple terms, setContextPath in Jetty is used to define the base URL path for your web application. It determines how users access your app through the browser.
+         *  For example:
+         *   If you set the context path to /myapp, users will access your app at http://localhost:8080/myapp.
+         *  If you set it to /, your app will be accessible directly at http://localhost:8080.
+         * It’s like giving your app a specific "address" within the server so it knows where to respond to requests.
+         */
         context.setContextPath("/");
         server.setHandler(context);
-
+        /* 
+         * Adding the servlets to my contextHandler. This is what links the servlets to my server 
+         */
         context.addServlet(new ServletHolder(new HomeServlet()), "/");
         context.addServlet(new ServletHolder(new SubmitServlet()), "/submit");
         context.addServlet(new ServletHolder(new QueryServlet()), "/query");
