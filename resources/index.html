@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Jetty App</title></head>
+<body>
+<h2>Hello, enter 5 numbers and your name</h2>
+<form method="post" action="/submit">
+  Name: <input name="name" required><br><br>
+  <input type="number" name="n1" required><br>
+  <input type="number" name="n2" required><br>
+  <input type="number" name="n3" required><br>
+  <input type="number" name="n4" required><br>
+  <input type="number" name="n5" required><br><br>
+  <button type="submit">Go</button>
+</form>
+
+<hr>
+
+<h2>Search Existing Records by Name</h2>
+<form method="get" action="/query">
+  Name: <input name="name" required>
+  <button type="submit">Go</button>
+</form>
+</body>
+</html>
