@@ -25,7 +25,7 @@ From your Jetty 12..25 server zip file, copy the following JARs into 'lib/':
   
 3. Compile  
 -----------  
-javac -cp "lib/*" -d classes src/com/example/*.java  
+javac -cp "lib/\*" -d classes src/com/example/\*.java  
   
   
 4. Create Manifest (in project root)
