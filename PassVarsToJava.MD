@@ -34,6 +34,7 @@ The table below summarizes the key differences between the two:
 |   Access in code?   |   System.getProperty("key")   | Depends on included -D flags       |   
 |       Scope         |          Runtime only         | Launch environment                 |  
 |   Where it's used   |       java -Dkey=value ...    | java $JAVA_OPTS ... (or in scripts)|  
+|---------------------|-------------------------------|------------------------------------|
 **When Should You Use Each?**  
 - Use `-Dkey=value` when you control the launch command and want to configure one specific
 application. - Use `JAVA_OPTS` when running in a scripted, containerized, or CI/CD environment
