@@ -51,7 +51,8 @@ You can access them in Java via:
 
 **What is JAVA_OPTS?**  
 JAVA_OPTS is an environment variable conventionally used to store JVM options like `-Xmx`, `-D`,
-`-XX`, etc. It is not interpreted by Java itself but is often included in launch scripts. Example: `export JAVA_OPTS="-Dapi.url=http://somehost:8081 -Xmx512m"`  
+`-XX`, etc. It is not interpreted by Java itself but is often included in launch scripts. Example:  
+`export JAVA_OPTS="-Dapi.url=http://somehost:8081 -Xmx512m"`  
 `java $JAVA_OPTS -jar app.jar`  
   
   
