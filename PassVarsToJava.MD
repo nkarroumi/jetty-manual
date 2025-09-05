@@ -26,8 +26,9 @@ JAVA_OPTS is an environment variable conventionally used to store JVM options li
 `-XX`, etc. It is not interpreted by Java itself but is often included in launch scripts. Example: export JAVA_OPTS="-Dapi.url=http://somehost:8081 -Xmx512m" java $JAVA_OPTS -jar app.jar  
 **Key Differences**  
 The table below summarizes the key differences between the two:  
---------------------------------------------------------------------------------------------
-|      Feature        | -Dkey=value (System Property) | JAVA_OPTS (Environment Variable)   |    
+
+|      Feature        | -Dkey=value (System Property) | JAVA_OPTS (Environment Variable)   |  
+|------------------------------------------------------------------------------------------|  
 |      Purpose        |   Set a system property       |Container for JVM options           |    
 | Java understands it?|              Yes              | No (requires manual inclusion)     |   
 |   Access in code?   |   System.getProperty("key")   | Depends on included -D flags       |   
