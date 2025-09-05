@@ -69,6 +69,7 @@ public class Main {
         context.addServlet(new ServletHolder(new FetchServlet()), "/fetch");
 
         server.start();
+        System.out.println("Main App running on http://localhost:8081/");
         server.join();
     }
 
