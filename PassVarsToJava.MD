@@ -20,7 +20,7 @@ xargs) java -jar main-app.jar Great for developers using different environments
 **What are JVM System Properties?**  
 These are key-value pairs passed to the Java Virtual Machine at runtime using the \`-D\` flag. Example:
 java -Dapi.url=http://somehost:8081 -jar app.jar You can access them in Java via:
-System.getProperty("api.url")
+System.getProperty("api.url")  
 **What is JAVA_OPTS?**  
 JAVA_OPTS is an environment variable conventionally used to store JVM options like `-Xmx`, `-D`,
 `-XX`, etc. It is not interpreted by Java itself but is often included in launch scripts. Example: export JAVA_OPTS="-Dapi.url=http://somehost:8081 -Xmx512m" java $JAVA_OPTS -jar app.jar  
