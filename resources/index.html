@@ -1,17 +1,30 @@
 
 <!DOCTYPE html>
 <html>
-<head><title>Jetty App</title></head>
+<head><title>Jetty Little App</title>
+<!-- Move this script outta here at some point-->    
+    <script>
+        async function fetchNumbers() {
+            const res = await fetch('/fetch');
+            const data = await res.json();
+            data.numbers.forEach((n, i) => {
+                document.getElementById('n' + (i + 1)).value = n;
+            });
+        }
+    </script>
+</head>
 <body>
 <h2>Hello, enter 5 numbers and your name</h2>
 <form method="post" action="/submit">
-  Name: <input name="name" required><br><br>
+  Name: <input type="text" name="name" required><br><br>
   <input type="number" name="n1" required><br>
   <input type="number" name="n2" required><br>
   <input type="number" name="n3" required><br>
   <input type="number" name="n4" required><br>
   <input type="number" name="n5" required><br><br>
   <button type="submit">Go</button>
+  <br><br>
+  <button type="button" onclick="fetchNumbers()">Fetch Random Numbers</button>
 </form>
 
 <hr>

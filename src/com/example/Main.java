@@ -5,6 +5,10 @@ import jakarta.servlet.http.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.ee10.servlet.*;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -62,6 +66,7 @@ public class Main {
         context.addServlet(new ServletHolder(new HomeServlet()), "/");
         context.addServlet(new ServletHolder(new SubmitServlet()), "/submit");
         context.addServlet(new ServletHolder(new QueryServlet()), "/query");
+        context.addServlet(new ServletHolder(new FetchServlet()), "/fetch");
 
         server.start();
         server.join();
@@ -113,6 +118,28 @@ public class Main {
             }
 
             out.write("<p><a href='/'>Back</a></p>");
+        }
+    }
+
+
+
+    public static class FetchServlet extends HttpServlet {
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+            URL url = null;
+            try {
+                URI uri = new URI("http://localhost:8082/api/numbers");
+                url = uri.toURL();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String response = reader.lines().collect(Collectors.joining());
+            reader.close();
+
+            resp.setContentType("application/json");
+            resp.getWriter().write(response);
         }
     }
 }
