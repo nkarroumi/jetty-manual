@@ -1,4 +1,8 @@
 @echo off
+REM === Clean up previous compile ===
+rmdir /s /q classes
+rm app.jar
+mkdir classes
 REM === Compile ===
 javac -cp "lib/*" -d classes src/com/example/*.java
 

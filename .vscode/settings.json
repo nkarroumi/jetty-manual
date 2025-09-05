@@ -1,0 +1,15 @@
+//suppresses vscode errors even though the app runs.
+//ctrl+shift+p: type and select "Preferences: Open Workspace Settings (JSON)"
+//VSCode will create this file. Add the below to it.
+{
+  "java.project.referencedLibraries": [
+    "main-app/lib/*.jar",
+    "api-app/lib/*.jar"
+  ],
+  "java.sourcePaths": [
+    "main-app/src",
+    "api-app/src"
+
+  ]
+
+}
