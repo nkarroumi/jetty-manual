@@ -27,7 +27,7 @@ xargs) java -jar main-app.jar Great for developers using different environments
   
   
 **What are JVM System Properties?**  
-These are key-value pairs passed to the Java Virtual Machine at runtime using the \`-D\` flag. Example:
+These are key-value pairs passed to the Java Virtual Machine at runtime using the `-D` flag. Example:
 java -Dapi.url=http://somehost:8081 -jar app.jar You can access them in Java via:
 System.getProperty("api.url")  
   
@@ -51,5 +51,6 @@ The table below summarizes the key differences between the two:
   
 **When Should You Use Each?**  
 - Use `-Dkey=value` when you control the launch command and want to configure one specific
-application. - Use `JAVA_OPTS` when running in a scripted, containerized, or CI/CD environment
+application.  
+- Use `JAVA_OPTS` when running in a scripted, containerized, or CI/CD environment
 where you want default JVM behavior shared across multiple runs or apps.
