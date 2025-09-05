@@ -4,15 +4,14 @@ API_URL=http://somehost:8081 java -jar main-app.jar This is the most common and 
 App–friendly method.
 **Option 2: Inline Environment Variable**  
 Linux/macOS: API_URL=http://somehost:8081 java -jar main-app.jar Useful in scripts and Docker
-containers.
+containers.  
 **Option 3: Use a Wrapper Script**  
 Windows (run-app.bat): @echo off set API_URL=http://somehost:8081 java -jar main-app.jar
 Linux/macOS (run-app.sh): #!/bin/bash export API_URL=http://somehost:8081 java -jar main-app.jar
-Recommended for production VMs where operations teams manage startup.
+Recommended for production VMs where operations teams manage startup.  
 **Option 4: JVM System Property (Alternative)**  
-You can pass properties using -D: java -Dapi.url=http://somehost:8081 -jar main-app.jar Then access in
-Java with: String apiUrl = System.getProperty("api.url", "http://localhost:8081"); This uses JVM
-properties instead of environment variables.
+You can pass properties using -D: java -Dapi.url=http://somehost:8081 -jar main-app.jar Then access in Java with: String apiUrl = System.getProperty("api.url", "http://localhost:8081"); This uses JVM
+properties instead of environment variables.  
 **Pro Tip: Use .env File for Local Development**  
 Create a .env file: API_URL=http://somehost:8081 Then load it before running: export $(cat .env |
 xargs) java -jar main-app.jar Great for developers using different environments  
@@ -28,7 +27,7 @@ JAVA_OPTS is an environment variable conventionally used to store JVM options li
 JAVA_OPTS="-Dapi.url=http://somehost:8081 -Xmx512m" java $JAVA_OPTS -jar app.jar
 **Key Differences**  
 The table below summarizes the key differences between the two:
---------------------------------------------------------------------------------------------
+
 |      Feature        | -Dkey=value (System Property) | JAVA_OPTS (Environment Variable)   |    
 |      Purpose        |   Set a system property       |Container for JVM options           |    
 | Java understands it?|              Yes              | No (requires manual inclusion)     |   
