@@ -16,11 +16,11 @@ Useful in scripts and Docker containers.
   
 
 **Option 3: Use a Wrapper Script**  
-Windows (run-app.bat):  
+- Windows (run-app.bat):  
 `@echo off`  
 `set API_URL=http://somehost:8081`  
 `java -jar main-app.jar`  
-Linux/macOS (run-app.sh): 
+- Linux/macOS (run-app.sh): 
 `#!/bin/bash`  
 `export API_URL=http://somehost:8081`  
 `java -jar main-app.jar`  
